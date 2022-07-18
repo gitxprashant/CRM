@@ -1,0 +1,190 @@
+<html lang="en">
+<head>
+  {% load static %}
+  <script src="http://localhost:35729/livereload.js"></script>
+  <title>GST Service Center</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+      .form-control:focus {
+          border-color: #ffffff;
+          outline: 0;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+      }
+      
+      .col-sm-11 {
+          width: 97.666667%;
+        }
+
+      .first_layer{
+          background-image: url("{% static 'crm.jpg' %}");
+          border-radius: 30px;
+          padding-top: 36px;
+          padding-bottom: 68px;
+          position:absolute;
+          bottom: 250px;
+          left: 10px;
+          border: 2px solid white;
+          background-size: 379px 455px;
+          background-repeat: no-repeat;
+
+      }
+      
+      .col-sm-11 {
+
+          width: 97.666667%;
+      }
+      .second_layer{
+          margin-left: 24px;
+         
+      }
+      .btn{
+          margin-top: 30px;
+          margin-bottom: 10px;
+          width: 100%;
+          border-radius: 10px;
+          color: white;
+          background-color: rgb(13, 13, 13,0.4);
+          border: 0px;
+          padding-top: 10px;
+      }
+      .form-group > i{
+          margin-left: 37%;
+          padding-bottom: 0px;
+          color: rgb(245, 240, 240);
+          
+      }
+       span{
+          font-size: 12px;
+            line-height: 10px;
+      }
+      .col-sm-4{
+          padding-top: 100px;
+      }
+
+      .custom_form{
+        color: white !important;
+        border: 0px;
+        border-bottom: ridge;
+        border-radius: 0px;
+        background: none;
+      }
+      .custom_form:hover{
+        color: white !important;
+        border: 0px;
+        border-bottom: ridge;
+        border-radius: 0px;
+        background: none;
+      }
+      .form-control::placeholder { color: white;}
+      .form{
+        background: rgba(10, 10, 10,0.4);
+        border:0px 0px 1px 0px;
+      }
+      .first_container{
+        padding-top: 10px;
+      }
+      .btn_div{
+        padding-top: 0px;
+      }
+      .text{
+        padding-top: 18px;
+      }
+      .show {
+        display: block !important;
+      }
+      .alert-dismissible {
+        padding-right: 35px;
+      }
+      .alert {
+        background-image: url(/static/background.jpeg);
+        padding: 0px;
+        margin-bottom: -1px;
+        border: 1px solid rgb(0 0 0 / 0%);
+        color: whitesmoke;
+        font-size: 25px;
+      }
+      .button{
+
+        margin-top: 100px;
+
+      }
+      .h1{
+
+        padding-top: 30px;
+
+      }
+</style>
+</head>
+<body>
+<div class="container-fluid">
+  {% for message in messages %} 
+  <div class="alert alert-{{ messages.tags }} alert-dismissible show" role="alert">
+  <strong> Messages: </strong> {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  {% endfor %}
+    {% load static %}
+    <img src="{% static 'background.jpeg' %}" height=100% width=100%>
+    </div>
+  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 "></div>
+              <div class="col-sm-4 ">
+                  <div class="row">
+                      <div class="col-sm-11 first_layer">
+                        {% if user.is_authenticated %}
+
+                        <h1 style="color:#ffffff">Hello {{username}}</h1>
+                        <h2 style="color:#ffffff">You're successfully logged in.</h2>
+                        {% csrf_token %}
+                        <form action="/signout">
+
+                        <button type="submit" class="btn button">SIGNOUT</button>
+                        </form>
+                        </div>
+
+                        {% else %}
+                        <div class="text"><h1 style="color: white; font-size:31px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome To <br><br> GST SERVICE CENTER</h1></div>
+                            
+                            <div class="btn_div">
+                            <form action="/signup">
+                            <button type="submit" class="btn btn-default">SIGNUP</button>
+                            </form>
+                            </div>
+
+                            <div class="btn_div">
+                            <form action="/signin">
+                            <button type="submit" class="btn btn-div">LOGIN</button>
+                            </form>
+                            </div>
+
+                        {% endif %}
+                        </form>
+
+                        </div>   
+                  </div>
+                </div>
+              <div class="col-sm-4" style="padding:0px;">
+            </div>      
+        </div>
+</div>
+</div>
+
+
+</body>
+
+</html>
+
+
