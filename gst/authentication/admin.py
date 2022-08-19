@@ -1,20 +1,31 @@
 
-from calendar import c
 from django.contrib import admin
 
-from authentication.models import CustomerDetail, Staff, CustomUser
+from authentication.models import CustomUser
+
+from django.contrib.auth.models import Group
+
+admin.site.unregister(Group)
 
 
-admin.site.register(CustomUser)
-
-@admin.register(Staff)
-class StaffAdmin(admin.ModelAdmin):
-    list_display= ['user','email','phone']
 
 
-@admin.register(CustomerDetail)
-class CustomerDetailAdmin(admin.ModelAdmin):
-    list_display = ['id','date','cx_name','phone','email','pincode','state','disposition1','disposition2']
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    admin.site.site_header='GST Service Center'
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    list_display= ['id','username','email','number','last_login','last_logout',]
+
+    search_fields = ['username',] 
+
+
+
+
+
+
 
 
 

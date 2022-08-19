@@ -1,7 +1,6 @@
 from pathlib import Path
-from pickle import TRUE
-from django.conf import settings
 from . info import *
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,21 +12,28 @@ EMAIL_PORT=EMAIL_PORT
 
 SECRET_KEY ='django-insecure-p(jci#2+@y42q-ll-gr_2&mz8(at0!^1r#ftb1d(t=j-#=%)-)'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['gstservicecenter.herokuapp.com','127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = ['https://gstservicecenter.herokuapp.com','https://gstservicecenter.herokuapp.com/admin']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'newcustomer',
+    'existingcustomer',
     'authentication',
-    'details',
+    'sale',
+    'detailshared',
+    
 ]
 
 AUTH_USER_MODEL='authentication.CustomUser'
@@ -35,6 +41,7 @@ AUTH_USER_MODEL='authentication.CustomUser'
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -96,9 +103,17 @@ USE_TZ = True
 
 STATIC_URL='/static/'
 
-STATICFILES_DIRS = (
- '/home/prashant/Desktop/CRM/gst/templates/authentication/static/',
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [('/home/prashant/Desktop/CRM/gst/templates/authentication/static/'),]
+
+"""STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)"""
+
+"""TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'), 
+)"""
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

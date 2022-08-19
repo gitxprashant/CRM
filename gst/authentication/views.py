@@ -1,6 +1,4 @@
 from django.shortcuts import redirect, render
-from django.http.response import HttpResponse
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login, logout
@@ -15,8 +13,6 @@ from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 from . models import CustomUser
 import datetime
-from django.contrib.auth.signals import user_logged_in, user_logged_out
-from django.dispatch import receiver
 
 # Create your views here.
 
@@ -24,7 +20,7 @@ def home(request):
 
     return render(request,"authentication/index.html")
 
-def signup(request):
+def signup(request, **kwargs):
     
     if request.method == "POST":
         
@@ -53,10 +49,10 @@ def signup(request):
             return redirect("home")
 
         myuser=CustomUser.objects.create_user(username, email, pwd)
-        
-        myuser.number=number
 
-        myuser.is_active = True
+        myuser.number = number
+
+        myuser.is_active = False
 
         myuser.save()
 
@@ -157,6 +153,11 @@ def activate(request, uidb64, token):
     else:
 
         return redirect(request, 'activation_failed.html')
+
+
+
+
+
 
 
 

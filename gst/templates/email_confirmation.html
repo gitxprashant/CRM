@@ -2,10 +2,18 @@
 
 Welcome to GST SERVICE CENTER
 
-Hello {{username}}!
+Thanks for signing up to GST Service Center
 
-Please confirm your email by clicking on the following link.
+Hello {{ user.username }}!
+
+Please confirm your email to activate your account by clicking on the following link.
 
 Confirmation Link:  http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+This is auto-generated mail from GST Service Center. Donot reply on this email.
+
+Sincerely,
+
+GST Service Center TEAM
 
 {% endautoescape %}
