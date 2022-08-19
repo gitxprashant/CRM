@@ -1,8 +1,3 @@
-from argparse import _MutuallyExclusiveGroup
-from base64 import urlsafe_b64decode
-from lib2to3.pgen2.tokenize import generate_tokens
-from pickle import TRUE
-from urllib import request, response
 from django.shortcuts import redirect, render
 from django.http.response import HttpResponse
 from django.contrib.auth.models import User
