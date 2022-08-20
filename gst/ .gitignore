@@ -1,0 +1,4 @@
+*.pyc 
+__pycache__/
+info.py
+db.sqlite3
