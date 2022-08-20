@@ -10,7 +10,7 @@ EMAIL_HOST_USER=EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD=EMAIL_HOST_PASSWORD
 EMAIL_PORT=EMAIL_PORT
 
-SECRET_KEY ='django-insecure-p(jci#2+@y42q-ll-gr_2&mz8(at0!^1r#ftb1d(t=j-#=%)-)'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = False
 
@@ -106,14 +106,6 @@ STATIC_URL='/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [('/home/prashant/Desktop/CRM/gst/templates/authentication/static/'),]
-
-"""STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)"""
-
-"""TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'), 
-)"""
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
