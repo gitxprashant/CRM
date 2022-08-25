@@ -12,7 +12,7 @@ EMAIL_PORT=EMAIL_PORT
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['gstservicecenter.herokuapp.com','127.0.0.1']
 

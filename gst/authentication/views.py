@@ -20,7 +20,7 @@ def home(request):
 
     return render(request,"authentication/index.html")
 
-def signup(request, **kwargs):
+def signup(request):
     
     if request.method == "POST":
         
