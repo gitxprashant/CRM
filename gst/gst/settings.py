@@ -10,7 +10,7 @@ EMAIL_HOST_USER=EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD= EMAIL_HOST_PASSWORD
 EMAIL_PORT=EMAIL_PORT
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = ['django-insecure-p(jci#2+@y42q-ll-gr_2&mz8(at0!^1r#ftb1d(t=j-#=%)-)']
 
 DEBUG = False
 
